@@ -24,6 +24,7 @@ package main
 
 import (
 	"context"
+	"flag"
 	"github.com/kolide/osquery-go"
 	"github.com/kolide/osquery-go/plugin/table"
 	"io/ioutil"
@@ -33,11 +34,12 @@ import (
 )
 
 func main() {
-	if len(os.Args) != 2 {
-		log.Fatalf(`Usage: %s SOCKET_PATH`, os.Args[0])
-	}
+	socketPtr := flag.String("socket", "socket-path", "socket path")
+	flag.String("timeout", "12", "timeout")
+	flag.String("interval", "3", "interval")
+	flag.Parse()
 
-	server, err := osquery.NewExtensionManagerServer("slackware_packages", os.Args[1])
+	server, err := osquery.NewExtensionManagerServer("slackware_packages", *socketPtr)
 
 	if err != nil {
 		log.Fatalf("Error creating extension: %s\n", err)
