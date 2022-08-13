@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Configure Go
+      uses: actions/setup-go@v3
+      with:
+        go-version-file: 'go.mod'
+    - run: go version
+
+    - name: Build
+      run: go build .
+
+    - name: golint
+      uses: golangci/golangci-lint-action@v3
+      with:
+        args: --issues-exit-code=1
