@@ -1,0 +1,32 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Configure Go
+      uses: actions/setup-go@v3
+      with:
+        go-version-file: 'go.mod'
+    - run: go version
+
+    - name: Build
+      run: |
+        go mod vendor
+        git archive --format=tar --prefix=slack-osquery-${{ github.ref_name }}/ ${{ github.ref_name }} > slack-osquery-${{ github.ref_name }}.tar
+        tar --append --transform 's,^vendor,slack-osquery-${{ github.ref_name }}/vendor,' --file=slack-osquery-${{ github.ref_name }}.tar vendor
+        gzip --best slack-osquery-${{ github.ref_name }}.tar
+
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          slack-osquery-${{ github.ref_name }}.tar.gz
