@@ -1,6 +1,6 @@
 // MIT License
 
-// Copyright (c) 2020 Andrew Clemons
+// Copyright (c) 2020,2022 Andrew Clemons
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -25,8 +25,8 @@ package main
 import (
 	"context"
 	"flag"
-	"github.com/kolide/osquery-go"
-	"github.com/kolide/osquery-go/plugin/table"
+	"github.com/osquery/osquery-go"
+	"github.com/osquery/osquery-go/plugin/table"
 	"io/ioutil"
 	"log"
 	"os"
