@@ -14,10 +14,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3.5.3
+    - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
 
     - name: Configure Go
-      uses: actions/setup-go@v4.0.1
+      uses: actions/setup-go@fac708d6674e30b6ba41289acaab6d4b75aa0753 # v4.0.1
       with:
         go-version-file: 'go.mod'
     - run: go version
@@ -26,6 +26,6 @@ jobs:
       run: go build .
 
     - name: golint
-      uses: golangci/golangci-lint-action@v3.6.0
+      uses: golangci/golangci-lint-action@639cd343e1d3b897ff35927a75193d57cfcba299 # v3.6.0
       with:
         args: --issues-exit-code=1
