@@ -1,19 +1,20 @@
+---
 name: CI
 
-on:
+"on":
   push:
     branches:
-    - master
+      - master
   pull_request:
     branches:
-    - master
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v3.5.3
 
     - name: Configure Go
       uses: actions/setup-go@v4
@@ -25,6 +26,6 @@ jobs:
       run: go build .
 
     - name: golint
-      uses: golangci/golangci-lint-action@v3
+      uses: golangci/golangci-lint-action@v3.6.0
       with:
         args: --issues-exit-code=1

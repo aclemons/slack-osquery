@@ -1,6 +1,7 @@
+---
 name: Release
 
-on:
+"on":
   push:
     tags:
       - "v*.*"
@@ -10,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v3.5.3
 
     - name: Configure Go
-      uses: actions/setup-go@v4
+      uses: actions/setup-go@v4.0.1
       with:
         go-version-file: 'go.mod'
     - run: go version
