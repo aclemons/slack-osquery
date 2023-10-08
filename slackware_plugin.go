@@ -1,6 +1,6 @@
 // MIT License
 
-// Copyright (c) 2020,2022 Andrew Clemons
+// Copyright (c) 2020,2022-2023 Andrew Clemons
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,6 @@ import (
 	"flag"
 	"github.com/osquery/osquery-go"
 	"github.com/osquery/osquery-go/plugin/table"
-	"io/ioutil"
 	"log"
 	"os"
 	"strings"
@@ -72,7 +71,7 @@ func SlackwarePackagesGenerate(ctx context.Context, queryContext table.QueryCont
 		packageDir = "/var/log/packages"
 	}
 
-	files, err := ioutil.ReadDir(packageDir)
+	files, err := os.ReadDir(packageDir)
 
 	if err != nil {
 		return nil, err

@@ -1,6 +1,6 @@
 module github.com/aclemons/slack-osquery
 
-go 1.20
+go 1.21
 
 require github.com/osquery/osquery-go v0.0.0-20220706183148-4e1f83012b42
 
