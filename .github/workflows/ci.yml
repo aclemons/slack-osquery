@@ -28,7 +28,7 @@ jobs:
       run: go build .
 
     - name: staticcheck
-      uses: dominikh/staticcheck-action@v1.2.0
+      uses: dominikh/staticcheck-action@a3513ade2e5cb8075ba1c1ed1890a989cf0f2aa0 # v1.2.0
       with:
         version: "2023.1.3"
         install-go: false
