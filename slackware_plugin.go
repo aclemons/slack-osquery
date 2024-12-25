@@ -1,6 +1,6 @@
 // MIT License
 
-// Copyright (c) 2020,2022-2023 Andrew Clemons
+// Copyright (c) 2020,2022-2024 Andrew Clemons
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -25,11 +25,12 @@ package main
 import (
 	"context"
 	"flag"
-	"github.com/osquery/osquery-go"
-	"github.com/osquery/osquery-go/plugin/table"
 	"log"
 	"os"
 	"strings"
+
+	"github.com/osquery/osquery-go"
+	"github.com/osquery/osquery-go/plugin/table"
 )
 
 func main() {
@@ -39,7 +40,6 @@ func main() {
 	flag.Parse()
 
 	server, err := osquery.NewExtensionManagerServer("slackware_packages", *socketPtr)
-
 	if err != nil {
 		log.Fatalf("Error creating extension: %s\n", err)
 	}
@@ -60,7 +60,7 @@ func SlackwarePackagesColumns() []table.ColumnDefinition {
 	}
 }
 
-func SlackwarePackagesGenerate(ctx context.Context, queryContext table.QueryContext) ([]map[string]string, error) {
+func SlackwarePackagesGenerate(_ context.Context, _ table.QueryContext) ([]map[string]string, error) {
 	// slackware 15.0 package directory
 	packageDir := "/var/lib/pkgtools/packages/"
 
@@ -72,7 +72,6 @@ func SlackwarePackagesGenerate(ctx context.Context, queryContext table.QueryCont
 	}
 
 	files, err := os.ReadDir(packageDir)
-
 	if err != nil {
 		return nil, err
 	}
