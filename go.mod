@@ -1,8 +1,8 @@
 module github.com/aclemons/slack-osquery
 
-go 1.25
+go 1.26
 
-require github.com/osquery/osquery-go v0.0.0-20240910233439-561a72587be6
+require github.com/osquery/osquery-go v0.0.0-20260508130258-3e773449a5d4
 
 require (
 	github.com/Microsoft/go-winio v0.6.2 // indirect
