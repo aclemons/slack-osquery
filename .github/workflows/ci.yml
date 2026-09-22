@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     env:
       # renovate: datasource=github-releases depName=golangci/golangci-lint
       GOLANGCI_LINT_VERSION: 'v2.13.2'
